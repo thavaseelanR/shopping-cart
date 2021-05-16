@@ -1,0 +1,127 @@
+.amazon-login-wrapper {
+    display: grid;
+    grid-template-rows: 50px auto 71px;
+    padding: 8px 18px;
+
+    .amazon-registration-header-container {
+        display: grid;
+        color: red;
+        height: 70px;
+
+        .header-main-container {
+            .header-logo-container {
+                width: 103px;
+            }
+        }
+    }
+
+    .amazon-login-main-container {
+        width: 700px;
+        margin: 20px 391.6px 85px;
+
+        .amazon-login-main-inner-container {
+            display: grid;
+            width: 350px;
+            margin: 0 auto;
+            border: 1px #ddd solid;
+            // position: relative;
+            padding: 20px 26px;
+
+            .login-from-container {
+                display: grid;
+                row-gap: 14px;
+                font-weight: 400;
+                line-height: 1.2;
+                font-family: "Amazon Ember", Arial, sans-serif;
+                text-align: left;
+                .create-account-text {
+                    margin: 0px;
+                    font-weight: 400;
+                    font-size: 28px;
+                    line-height: 1.2;
+                    font-family: "Amazon Ember", Arial, sans-serif;
+                }
+
+                .your-name-text {
+                    display: block;
+                    padding-left: 2px;
+                    padding-bottom: 2px;
+                    font-weight: 700;
+                    font-size: 13px;
+                    line-height: 19px;
+                    color: #111;
+                    font-family: Arial, sans-serif;
+                }
+                .input-first-name {
+                    width: 100%;
+                    margin-right: 0;
+                    background-color: #fff;
+                    // height: 26px;
+                    padding: 3px 7px;
+                    line-height: normal;
+                    border: 1px solid #a6a6a6;
+                    border-top-color: #949494;
+                    border-radius: 3px;
+                    -webkit-box-sizing: border-box;
+                    height: 31px;
+                }
+
+                .continue-button {
+                    height: 30px;
+                    padding: 1px 6px;
+                    width: 100%;
+                    background-color: #f0c14b;
+                    display: block;
+                    border: 1px solid #949494;
+                }
+
+                .privite-policy-text {
+                    font-size: 12px !important;
+                    line-height: 1.5 !important;
+                    margin-top: 18px !important;
+                    color: #111;
+                }
+
+                .condition-link {
+                    text-decoration: none;
+                    color: #0066c0;
+                }
+                .help-text{
+                    text-decoration: none;
+                    color: #0066c0; 
+                    font-size: 13px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+
+    .amazon-registration-footer-container {
+        display: grid;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 3px, transparent);
+        height: 44px;
+        margin-top: -61px;
+        width: 850px;
+        margin-left: 300px;
+        .footer-inks-container {
+            margin-top: 15px;
+
+            .footerlink {
+                text-decoration: none;
+                padding: 10px;
+                color: #0066c0;
+                font-size: 11px !important;
+                line-height: 1.465 !important;
+                text-align: center !important;
+                font-family: "Amazon Ember", Arial, sans-serif;
+                margin-bottom: 10px !important;
+            }
+        }
+        .footer-text {
+            margin-top: 10px;
+            font-size: 11px !important;
+            line-height: 1.465 !important;
+            color: #555 !important;
+        }
+    }
+}

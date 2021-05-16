@@ -1,0 +1,89 @@
+.dhash-port {
+    background-color: white;
+
+    .dhash-port-container {
+        margin-top: 50px;
+
+        .productname {
+            margin-bottom: 20px;
+        }
+
+        .upload-lorge-img {
+            margin-top: 20px;
+        }
+
+        .loge-img-text {
+            margin-top: 20px;
+        }
+
+        .thubnail-image-text {
+            margin-top: 20px;
+        }
+
+        .sub-thubnail-img {
+            margin-left: 20px;
+        }
+    }
+
+    .product-detail-text {
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .dashbord-product-main-detail-container {
+        width: 630px;
+        position: relative;
+        margin-bottom: 20px;
+
+        .product-main-dhashbord-detail-add-sub {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    .product-detail-container-dashbord {
+        border: 1px solid #878787;
+        height: 100%;
+        width: 550px;
+
+        .product-main-title {
+            display: grid;
+            grid-template-columns: 150px 1fr 50px;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #878787;
+            align-self: center;
+        }
+        .subttile-conainer {
+            display: grid;
+            grid-template-columns: 1fr 80px;
+            padding: 24px;
+
+        }
+
+        
+        .subtitle-text {
+            display: grid;
+            align-self: center;
+            justify-self: center;
+        }
+        .product-detail--dashbord {
+            padding: 0;
+            padding-top: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 10px;
+            justify-self: center;
+        }
+    }
+
+    .submit-btn-container{
+      display: grid;
+
+       .submit-btn{
+        display: grid;
+           justify-self: center;
+       } 
+    }
+}
