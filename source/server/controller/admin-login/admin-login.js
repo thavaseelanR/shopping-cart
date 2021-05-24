@@ -6,17 +6,15 @@ async function adminLoginUser(userName, password) {
     try {
         const hashPassword = md5(password);
         const isDeleteUser = false;
-        await AdminLogin({
-            adminUserName: "Satj",
-            adminPassword: "asdasd",
-            isDeleteUser: false
-        }).save()
-        const checkUserInDb = await AdminLogin.find();
-        const c = 4;
+ 
         if (userName) {
-            const checkUserInDb = await AdminLogin.find({userName:userName}).count();
-            if (checkUserInDb == 1) {
-
+            const checkUserInDb = await AdminLogin.find();
+            if (checkUserInDb[0].adminUserName == userName && checkUserInDb[0].adminPassword == hashPassword) {
+                const userDetail = {
+                    userName: checkUserInDb[0].adminUserName,
+                    message: 'successfully login'
+                };
+                return userDetail;
             } else {
                 return 'user Not Login'
             }

@@ -11,7 +11,7 @@ const Register = (props) => {
         <div>
 
             <Container maxWidth="sm">
-                
+
                 <Grid
                     container
                     spacing={0}
@@ -29,7 +29,7 @@ const Register = (props) => {
                                 color="secondary"
                                 className="username"
                                 fullWidth={true}
-                                
+
                             />
 
                             <div style={{ color: 'red' }}></div>
@@ -42,7 +42,7 @@ const Register = (props) => {
                                 color="secondary"
                                 className="username"
                                 fullWidth={true}
-                               />
+                            />
                             <div style={{ color: 'red' }}></div>
 
                             <TextField
@@ -52,7 +52,7 @@ const Register = (props) => {
                                 color="secondary"
                                 className="username"
                                 fullWidth={true}
-                                />
+                            />
                             <div style={{ color: 'red' }}></div>
 
                             <TextField
@@ -62,7 +62,7 @@ const Register = (props) => {
                                 color="secondary"
                                 className="username"
                                 fullWidth={true}
-                               />
+                            />
                             <div style={{ color: 'red' }}></div>
 
                             <TextField
@@ -74,7 +74,7 @@ const Register = (props) => {
                                     shrink: true,
                                 }}
                                 fullWidth={true}
-                                // onChange={toDatayDate}
+                            // onChange={toDatayDate}
                             />
 
                             <div>

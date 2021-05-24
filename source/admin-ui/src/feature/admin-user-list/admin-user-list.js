@@ -1,7 +1,7 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './admin-user-list.scss';
-
+import { useDispatch, useSelector } from 'react-redux'
 import AdminUserListTable from './admin-user-list-table';
 import AdminUserListTablePagination from './admin-user-list-table-pagination';
 import AdminAddNewUser from './admin-add-new-user';
@@ -10,8 +10,28 @@ import AdminDeleteUser from './admin-delete-user';
 
 import AdminDashbordHeader from '../admin-dashbord-header/admin-dashbord-header';
 import AdminDashbordSitebar from '../admin-dashbord-sidebar/admin-dashbord-sitebar';
+import { setAddUserFormClosed } from './slice/admin-user-list-common-slice'
 
 function AdminUserList() {
+
+    const dispatch = useDispatch();
+    const { isAddUserFormClosed } = useSelector((state) => state?.adminUserListCommonReducer?.addNewUserPage) || {}
+
+    useEffect(() => {
+        console.log(isAddUserFormClosed);
+        if (isAddUserFormClosed) {
+            // refresh the grid data
+            alert(true)
+        }else{
+            alert(false)
+        }
+    }, [isAddUserFormClosed])
+
+    const addNewUser = () => {
+        debugger
+        dispatch(setAddUserFormClosed(false))
+    }
+
     return (
         <div>
             <div className="preloader">
@@ -34,7 +54,7 @@ function AdminUserList() {
                                         <h2><b>Admin User</b></h2>
                                     </div>
                                     <div className="col-sm-6">
-                                        <a href="#addEmployeeModal" className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                                        <a href="#addEmployeeModal" onClick={addNewUser} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
                                     </div>
                                 </div>
                             </div>

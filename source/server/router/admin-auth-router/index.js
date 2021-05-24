@@ -6,7 +6,7 @@ const adminLoginUser = require('../../controller/admin-login/index');
 const adminUserRegister = require('../../controller/admin-register/index');
 
 module.exports = (app) => {
+    
     app.post('/admin-login', adminLoginUser);
-
-    app.post('admin-user-register', adminUserRegister);
+    app.post('/admin-user-register', adminUserRegister);
 }

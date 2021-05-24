@@ -2,9 +2,15 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var adminLoginSchema = new Schema({
-    adminUserName: { type: String, required: true },
-    adminPassword: { type: String},
-    isDeleteUser: { type: Boolean, require: true }
+    adminFirstName: { type: String, require: true },
+    adminLastName: { type: String, require: true },
+    adminUserName: { type: String, require: true },
+    adminPassword: { type: String },
+    adminRole: { type: String, require: true },
+    date: { type: String, require: true },
+    active: { type: String, require: true },
+    isDeleteUser: { type: Boolean },
+
 });
 
 // https://stackoverflow.com/questions/19474712/mongoose-and-multiple-database-in-single-node-js-project

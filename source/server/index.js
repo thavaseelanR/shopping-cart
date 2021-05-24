@@ -1,44 +1,52 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config()
-const session = require('express-session')
 const _ = require('lodash');
 const nunjucks = require('nunjucks');
 const http = require('http');
-const cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const { PORT, DB_CON } = process.env;
+
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors());
 
 //db
 const db = require('./db');
 
-// router
-const router = require('./router/index');
-router(app);
-
-const { PORT, DB_CON } = process.env;
 // session store
-const store = new MongoDBStore({
+var store = new MongoDBStore({
     uri: `mongodb://${DB_CON}`,
     collection: 'sessions'
 });
 
+store.on('error', function (error) {
+    console.log(error);
+});
 
-app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'session123',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        sameSite: false
+    },
     store: store,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-    cookie: { maxAge: 60000 }
+    saveUninitialized: true
 }));
+
+const middileware = require('./common/middileware/middileware');
+
+middileware(app)
+// router
+const router = require('./router/index');
+router(app);
 
 app.listen(PORT, () => {
     console.log(`server run on ${PORT}`)
-})
+});

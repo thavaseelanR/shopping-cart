@@ -1,0 +1,55 @@
+Arguments: 
+  C:\Program Files (x86)\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add cookie-parser
+
+PATH: 
+  C:\Python39\Scripts\;C:\Python39\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\src\flutter\bin;C:\Users\rthav\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\rthav\AppData\Roaming\npm;C:\Program Files (x86)\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\rthav\AppData\Local\Microsoft\WindowsApps;C:\Users\rthav\AppData\Local\Programs\Microsoft VS Code\bin;C:\src\flutter\bin;C:\Users\rthav\AppData\Local\Android\Sdk\platform-tools;C:\Users\rthav\AppData\Local\Yarn\bin;C:\Users\rthav\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.17.0
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  Error: 5564:error:1408F119:SSL routines:ssl3_get_record:decryption failed or bad record mac:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:677:
+
+npm manifest: 
+  {
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon -w index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "connect-mongodb-session": "^2.4.1",
+      "cookie-parser": "^1.4.5",
+      "cors": "^2.8.5",
+      "dotenv": "^9.0.2",
+      "express": "^4.17.1",
+      "express-session": "^1.17.1",
+      "http": "^0.0.1-security",
+      "lodash": "^4.17.21",
+      "md5": "^2.3.0",
+      "mongoose": "^5.12.9",
+      "nunjucks": "^3.2.3",
+      "uuid": "^8.3.2"
+    },
+    "description": "",
+    "devDependencies": {
+      "nodemon": "^2.0.7"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
