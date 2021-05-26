@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios';
+import { includes } from 'lodash';
 
 function AdminUserListTable() {
     return (
@@ -9,17 +11,17 @@ function AdminUserListTable() {
                         <th>
                             <span className="custom-checkbox">
                                 <input type="checkbox" id="selectAll" />
-                                <label for="selectAll"></label>
+                                <label htmlFor="selectAll"></label>
                             </span>
                         </th>
-                        <th style={{color:"#03A9F4"}}><b>#</b></th>   
-                        <th style={{color:"#03A9F4"}}><b>Name</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Last Name</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Email</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Role Name</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Date</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Active</b></th>
-                        <th style={{color:"#03A9F4"}}><b>Actions</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>#</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Name</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Last Name</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Email</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Role Name</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Date</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Active</b></th>
+                        <th style={{ color: "#03A9F4" }}><b>Actions</b></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +29,7 @@ function AdminUserListTable() {
                         <td>
                             <span className="custom-checkbox">
                                 <input type="checkbox" id="checkbox1" name="options[]" value="1" />
-                                <label for="checkbox1"></label>
+                                <label htmlFor="checkbox1"></label>
                             </span>
                         </td>
                         <th>1</th>

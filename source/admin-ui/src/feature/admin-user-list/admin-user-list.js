@@ -21,27 +21,18 @@ function AdminUserList() {
         console.log(isAddUserFormClosed);
         if (isAddUserFormClosed) {
             // refresh the grid data
-            alert(true)
-        }else{
-            alert(false)
+            //  alert(true)
+        } else {
+            // alert(false)
         }
     }, [isAddUserFormClosed])
 
     const addNewUser = () => {
-        debugger
         dispatch(setAddUserFormClosed(false))
     }
 
     return (
         <div>
-            <div className="preloader">
-                <div className="lds-ripple">
-                    <div className="lds-pos"></div>
-                    <div className="lds-pos"></div>
-                </div>
-            </div>
-
-
             <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
                 <AdminDashbordHeader />
                 <AdminDashbordSitebar />

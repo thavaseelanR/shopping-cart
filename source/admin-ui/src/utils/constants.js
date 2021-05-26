@@ -1,2 +1,2 @@
-export const apiHost = 'http://localhost:3010'
+export const apiHost = 'http://www.shoppingcart.com';
 

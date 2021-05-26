@@ -1,13 +1,13 @@
 import React, { useReducer } from "react";
 import { createSlice } from "@reduxjs/toolkit";
-import { post } from '../../utils';
+import { loginService } from '../services'
 
 import "./login.css";
 
 const initialState = {
   loginFormInputValue: {
-    userName: 'asdasd@gail.com',
-    password: 'asdasd',
+    userName: 'rthavaseelan66@gmail.com',
+    password: 'thavasee',
   },
   isFormSubmit: false
 };
@@ -23,32 +23,24 @@ const loginUserCreateSlice = createSlice({
     submitFormValue(state, action) {
       const { formSubmit } = action.payload;
       state.isFormSubmit = formSubmit;
-    },
-    async loginUser(state, action) {
-      const { userName, password } = action.payload;
-      const response = await post('/admin-login', {
-        data: { userName, password }
-      });
-      debugger
     }
   },
-  initialState,
+  initialState: initialState,
 });
 
 const loginUserReducer = loginUserCreateSlice.reducer;
 
-const { setFormInputValue, loginUser, submitFormValue } = loginUserCreateSlice.actions;
+const { setFormInputValue, submitFormValue } = loginUserCreateSlice.actions;
 
-const Login = () => {
+const Login = ({ history }) => {
   const [page, pageDispatch] = useReducer(loginUserReducer, initialState);
 
-  const [submitForm, submitFormDispatch] = useReducer(loginUserReducer, initialState);
-  const { isFormSubmit } = submitForm;
+  const { isFormSubmit } = page;
   const {
     loginFormInputValue: { userName, password },
   } = page;
 
-  if (submitForm.isFormSubmit) {
+  if (isFormSubmit) {
     validateForm()
   }
 
@@ -75,12 +67,13 @@ const Login = () => {
     return true
   }
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
     if (validateForm) {
-      pageDispatch(loginUser({ userName, password }));
+      const result = await loginService(userName, password);
+      history.push('/admin-user-list')
     } else {
-      submitFormDispatch(submitFormValue({ formSubmit: true }));
+      pageDispatch(submitFormValue({ formSubmit: true }));
     }
   };
 

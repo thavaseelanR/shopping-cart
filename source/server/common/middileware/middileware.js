@@ -4,11 +4,11 @@ module.exports = function(app) {
         if (req.session && req.session.adminLoginUserDetail && req.session.adminLoginUserDetail.isLoggedIn) {
             next();
         }
-        const unAuthedService = ['/admin-login',];
+        const unAuthedService = ['/admin-login', '/admin-register'];
         if (unAuthedService.includes(req.path)) {
             next();
         } else {
-            res.status(500).json("UN_AUTHED");
+            res.status(200).json("UN_AUTHED");
         }
     })
 }

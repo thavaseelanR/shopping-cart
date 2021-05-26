@@ -37,7 +37,7 @@ function App() {
             <Route exact path="/amazon-login" component={AmazonLogin} />
 
             {/* admin routers */}
-            <Route exact path="/admin-login" component={AdminLogin} />
+            <Route exact path="/" component={AdminLogin} />
 
             <Route exact path="/admin-register" component={AdminRegister} />
             <Route exact path="/admin-dashbord" component={AdminDashbord} />

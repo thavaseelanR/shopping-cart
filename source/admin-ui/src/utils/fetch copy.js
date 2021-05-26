@@ -4,7 +4,6 @@ import { apiHost } from './index'
 export async function fetch(url, options) {
     options = options || {}
     options.url = url
-    options.withCredentials = true;
     options.method = options.method || 'get';
 
     try {
@@ -18,15 +17,16 @@ export async function fetch(url, options) {
 
 export async function get(url, options = {}) {
     options.method = 'get';
-    if (!options.external) {
+    if(!options.external){
         url = api(url)
     }
     return fetch(url, options);
 }
 
 export async function post(url, options = {}) {
+    debugger
     options.method = 'post';
-    if (!options.external) {
+    if(!options.external){
         url = api(url)
     }
 

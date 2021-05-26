@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config()
+require('dotenv').config();
 const _ = require('lodash');
 const nunjucks = require('nunjucks');
 const http = require('http');
@@ -14,7 +14,11 @@ const app = express();
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: ['http://admin.shoppingcart.com', 'http://ui.shoppingcart.com'],
+    credentials: true,
+}));
+app.enable('trust proxy');
 
 //db
 const db = require('./db');
@@ -33,20 +37,28 @@ app.use(session({
     secret: 'session123',
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-        sameSite: false
+        domain: 'shoppingcart.com',
+        httpOnly: false,
+        path: '/',
+        secure: false
     },
     store: store,
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 
+
+app.set('view engine', 'nunjucks');
+app.use(express.static('public'));
+
 const middileware = require('./common/middileware/middileware');
 
-middileware(app)
+middileware(app);
 // router
 const router = require('./router/index');
+const { methods } = require('./model/admin-login');
 router(app);
 
 app.listen(PORT, () => {
-    console.log(`server run on ${PORT}`)
+    console.log(`server run on ${PORT}`);
 });

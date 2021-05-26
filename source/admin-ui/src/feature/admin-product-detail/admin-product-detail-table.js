@@ -9,7 +9,7 @@ function AdminProductDetailTable() {
                         <th>
                             <span className="custom-checkbox" style={{backroundcolor:"#03A9F4"}}>
                                 <input type="checkbox" id="selectAll" />
-                                <label for="selectAll"></label>
+                                <label htmlFor="selectAll"></label>
                             </span>
                         </th>
                         <th style={{color:"#03A9F4"}}><b>#</b></th>
@@ -24,7 +24,7 @@ function AdminProductDetailTable() {
                         <td>
                             <span className="custom-checkbox">
                                 <input type="checkbox" id="checkbox1" name="options[]" value="1" />
-                                <label for="checkbox1"></label>
+                                <label htmlFor="checkbox1"></label>
                             </span>
                         </td>
                         <td>1</td>

@@ -10,7 +10,7 @@ function AdminOrderProductTable() {
                         <th>
                             <span className="custom-checkbox">
                                 <input type="checkbox" id="selectAll" />
-                                <label for="selectAll"></label>
+                                <label htmlFor="selectAll"></label>
                             </span>
                         </th>
                         <th style={{color:"#03A9F4"}}><b>#</b></th>   

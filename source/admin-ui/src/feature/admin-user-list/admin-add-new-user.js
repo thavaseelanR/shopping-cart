@@ -2,43 +2,56 @@ import React, { useReducer } from "react";
 import { createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { setAddUserFormClosed } from "./slice/admin-user-list-common-slice";
+import { addNewAdminUser } from '../services/index';
 
 const initialState = {
   formValues: {
-    firstName: null,
-    lastName: null,
-    email: null,
-    roleName: null,
-    date: null,
-    active: null,
+    firstName: 'Thavaseelan',
+    lastName: 'Rajenderan',
+    email: 'rthavaseelan@gmail.com',
+    roleName: 'admin',
+    date: "2021-05-25",
+    active: 'active',
   },
+  isFormSubmit: false
 };
 
-let emailErrorMessage;
+// let emailErrorMessage;
+// if (fieldName == 'email') {
+//   const emailVerify = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(fieldValue);
+//   emailErrorMessage = emailVerify;
+// }
+
 const addAdminUserSlice = createSlice({
   name: "addAdminUserSlice",
   reducers: {
     setFormInputValue(state, action) {
       const { fieldName, fieldValue } = action.payload;
-      if (fieldName == 'email') {
-        const emailVerify = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(fieldValue);
-        emailErrorMessage = emailVerify;
-      }
       state.formValues[fieldName] = fieldValue;
     },
+    inputValueSubmit(state, action) {
+      const { isFormSubmit } = action.payload;
+      state.isFormSubmit = isFormSubmit;
+    }
   },
   initialState,
 });
 
-const { setFormInputValue } = addAdminUserSlice.actions;
+const { setFormInputValue, inputValueSubmit } = addAdminUserSlice.actions;
 
 const addAdminUserReducer = addAdminUserSlice.reducer;
+
 function AdminAddNewUser() {
 
   const [page, pageDispatch] = useReducer(addAdminUserReducer, initialState);
+
   const {
     formValues: { firstName, lastName, email, roleName, date, active },
-  } = page;
+    isFormSubmit } = page;
+
+  if (isFormSubmit) {
+    
+  }
 
   const dispatch = useDispatch();
 
@@ -56,7 +69,8 @@ function AdminAddNewUser() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, roleName, date,);
+    pageDispatch(inputValueSubmit({ isFormSubmit: true }));
+    addNewAdminUser(firstName, lastName, email, roleName, date);
   };
 
   const formClosed = () => {
@@ -88,6 +102,7 @@ function AdminAddNewUser() {
                     onChange={fieldChange("firstName")}
                     type="text"
                     className="form-control"
+                    value={firstName}
                   />
                   {firstName ? null : (
                     <div className="add-admin-error-msg">Enter Firstname</div>
@@ -99,6 +114,7 @@ function AdminAddNewUser() {
                     onChange={fieldChange("lastName")}
                     type="text"
                     className="form-control"
+                    value={lastName}
                   />
                   {lastName ? null : (
                     <div className="add-admin-error-msg">Enter Lastname</div>
@@ -110,11 +126,12 @@ function AdminAddNewUser() {
                     type="text"
                     className="form-control"
                     onChange={fieldChange("email")}
+                    value={email}
                   />
                   {email ? null : (
                     <div className="add-admin-error-msg">Enter Email</div>
                   )}
-                  {emailErrorMessage ? null : <div className="add-admin-error-msg">Invalid Email</div>}
+                  {/* {emailErrorMessage ? null : <div className="add-admin-error-msg">Invalid Email</div>} */}
                 </div>
                 <div className="form-group">
                   <label>Role Name</label>
@@ -122,6 +139,7 @@ function AdminAddNewUser() {
                     type="text"
                     className="form-control"
                     onChange={fieldChange("roleName")}
+                    value={roleName}
                   />
                   {roleName ? null : (
                     <div className="add-admin-error-msg">Enter Rolename</div>
@@ -133,6 +151,7 @@ function AdminAddNewUser() {
                     type="date"
                     className="form-control"
                     onChange={fieldChange("date")}
+                    value={date}
                   />
                   {date ? null : (
                     <div className="add-admin-error-msg">Enter Date</div>
@@ -145,7 +164,7 @@ function AdminAddNewUser() {
                     name="active"
                     style={{ width: "340px" }}
                   >
-                    <option value="" onChange={fieldChange("active")}>Choose Active</option>
+                    <option value="" onChange={fieldChange("active")} value={active}>Choose Active</option>
 
                     <option name="choess_active" value="Active">
                       Active
