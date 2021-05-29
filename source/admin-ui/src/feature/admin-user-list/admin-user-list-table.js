@@ -1,54 +1,88 @@
-import React from 'react'
-import axios from 'axios';
-import { includes } from 'lodash';
+import React, { useState, useEffect } from 'react';
+import DataTable from "react-data-table-component";
+import { adminUserList } from '../services';
+import { DEFAULT_PAGE_SIZE } from '../../utils'
 
-function AdminUserListTable() {
+const columns = [
+    {
+        name: 'First Name',
+        selector: 'adminFirstName',
+        sortable: true,
+    },
+    {
+        name: 'Last Name',
+        selector: 'adminLastName',
+        sortable: true,
+    },
+    {
+        name: 'Email',
+        selector: 'adminUserName',
+        sortable: true,
+    },
+    {
+        name: 'Role',
+        selector: 'adminRole',
+        sortable: true,
+    },
+    {
+        name: 'Date',
+        selector: 'date',
+        sortable: true,
+    },
+    {
+        name: 'Active',
+        selector: 'active',
+        sortable: true,
+    },
+];
+
+
+const AdminUserListTable = () => {
+    const [totalRows, setTotalRows] = useState(0);
+    const [perPage, setPerPage] = useState(DEFAULT_PAGE_SIZE);
+    const [data, setData] = useState()
+
+    const fetchUsers = async (pageNo, pageSize) => {
+        const result = await adminUserList(pageSize || perPage, pageNo)
+
+        setData(result.data.userInfo)
+        setTotalRows(result.data.totalRecord)
+    };
+
+    const handlePageChange = page => {
+        fetchUsers(page);
+    };
+
+    // const handlePerRowsChange = async (newPerPage, page) => {
+    //     debugger
+    //     setLoading(true);
+    //     const response = await axios.get(
+    //         `https://reqres.in/api/users?page=${page}&per_page=${newPerPage}&delay=1`,
+    //     );
+
+    //     setData(response.data.data);
+    //     setPerPage(newPerPage);
+    //     setLoading(false);
+    // };
+
+    useEffect(() => {
+        fetchUsers(1);
+    }, []);
+
     return (
-        <div>
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            <span className="custom-checkbox">
-                                <input type="checkbox" id="selectAll" />
-                                <label htmlFor="selectAll"></label>
-                            </span>
-                        </th>
-                        <th style={{ color: "#03A9F4" }}><b>#</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Name</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Last Name</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Email</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Role Name</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Date</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Active</b></th>
-                        <th style={{ color: "#03A9F4" }}><b>Actions</b></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span className="custom-checkbox">
-                                <input type="checkbox" id="checkbox1" name="options[]" value="1" />
-                                <label htmlFor="checkbox1"></label>
-                            </span>
-                        </td>
-                        <th>1</th>
-                        <td>thavasee</td>
-                        <td>rajendiran</td>
-                        <td>thavasee@mail.com</td>
-                        <td>super admin</td>
-                        <td>2-2-2020</td>
-                        <td>active</td>
-                        <td>
-                            <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
+        <DataTable
+            title="Users"
+            columns={columns}
+            data={data}
+            pagination
+            paginationServer
+            paginationTotalRows={totalRows}
+            selectableRows
+            // onChangeRowsPerPage={handlePerRowsChange}
+            onChangePage={handlePageChange}
+        />
+    );
 
-                </tbody>
-            </table>
-        </div>
-    )
 }
 
 export default AdminUserListTable;

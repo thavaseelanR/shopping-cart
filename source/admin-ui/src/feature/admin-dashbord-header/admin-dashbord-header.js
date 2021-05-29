@@ -8,81 +8,81 @@ import LoginUserImage from '../admin-asserts/images/users/1.jpg';
 
 function AdminDashbordHheader() {
     return (
-        <div>
-            <header className="topbar" data-navbarbg="skin6">
-                <nav className="navbar top-navbar navbar-expand-md navbar-light">
-                    <div className="navbar-header" data-logobg="skin5">
-                        <a className="nav-toggler waves-effect waves-light d-block d-md-none" >
-                            <i className="ti-menu ti-close"></i>
-                        </a>
 
-                        <div className="navbar-brand">
-                            <a href="/admin-dashbord" className="logo">
+        <header className="topbar" data-navbarbg="skin6">
+            <nav className="navbar top-navbar navbar-expand-md navbar-light">
+                <div className="navbar-header" data-logobg="skin5">
+                    <a className="nav-toggler waves-effect waves-light d-block d-md-none" >
+                        <i className="ti-menu ti-close"></i>
+                    </a>
 
-                                <b className="logo-icon">
-                                    <i className="wi wi-sunset"></i>
+                    <div className="navbar-brand">
+                        <a href="/admin-dashbord" className="logo">
 
-                                    <img src={LogoIcon} alt="homepage" className="dark-logo" />
+                            <b className="logo-icon">
+                                <i className="wi wi-sunset"></i>
 
-                                    <img src={LogoLightIcon} alt="homepage" className="light-logo" />
-                                </b>
+                                <img src={LogoIcon} alt="homepage" className="dark-logo" />
+
+                                <img src={LogoLightIcon} alt="homepage" className="light-logo" />
+                            </b>
 
 
-                                <span className="logo-text">
+                            <span className="logo-text">
 
-                                    <img src={LogoText} alt="homepage" className="dark-logo" />
+                                <img src={LogoText} alt="homepage" className="dark-logo" />
 
-                                    <img src={LogoLightText} className="light-logo" alt="homepage" />
-                                </span>
-                            </a>
-                        </div>
-
-                        <a className="topbartoggler d-block d-md-none waves-effect waves-light" data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i className="ti-more"></i>
+                                <img src={LogoLightText} className="light-logo" alt="homepage" />
+                            </span>
                         </a>
                     </div>
 
-                    <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+                    <a className="topbartoggler d-block d-md-none waves-effect waves-light" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i className="ti-more"></i>
+                    </a>
+                </div>
 
-                        <ul className="navbar-nav float-left mr-auto">
+                <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
 
-                            <li className="nav-item search-box">
-                                <a className="nav-link waves-effect waves-dark" >
-                                    <div className="d-flex align-items-center">
-                                        <i className="mdi mdi-magnify font-20 mr-1"></i>
-                                        <div className="ml-1 d-none d-sm-block">
-                                            <span>Search</span>
-                                        </div>
+                    <ul className="navbar-nav float-left mr-auto">
+
+                        <li className="nav-item search-box">
+                            <a className="nav-link waves-effect waves-dark" >
+                                <div className="d-flex align-items-center">
+                                    <i className="mdi mdi-magnify font-20 mr-1"></i>
+                                    <div className="ml-1 d-none d-sm-block">
+                                        <span>Search</span>
                                     </div>
-                                </a>
-                                <form className="app-search position-absolute">
-                                    <input type="text" className="form-control" placeholder="Search &amp; enter" />
-                                    <a className="srh-btn">
-                                        <i className="ti-close"></i>
-                                    </a>
-                                </form>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav float-right">
-
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                    <img src={LoginUserImage} alt="user" className="rounded-circle" width="31" />
-                                </a>
-                                <div className="dropdown-menu dropdown-menu-right user-dd animated">
-                                    <a className="dropdown-item" href="/admin-profile"><i className="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                    <a className="dropdown-item"><i className="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-                                    <a className="dropdown-item"><i className="ti-email m-r-5 m-l-5"></i> Inbox</a>
                                 </div>
-                            </li>
+                            </a>
+                            <form className="app-search position-absolute">
+                                <input type="text" className="form-control" placeholder="Search &amp; enter" />
+                                <a className="srh-btn">
+                                    <i className="ti-close"></i>
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav float-right">
 
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-        </div>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                <img src={LoginUserImage} alt="user" className="rounded-circle" width="31" />
+                            </a>
+                            <div className="dropdown-menu dropdown-menu-right user-dd animated">
+                                <a className="dropdown-item" href="/admin-profile"><i className="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                                <a className="dropdown-item"><i className="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                                <a className="dropdown-item"><i className="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
     )
 }
 

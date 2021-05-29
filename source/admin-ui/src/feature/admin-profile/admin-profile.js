@@ -17,7 +17,7 @@ function AdminProfile() {
                 <AdminDashbordHeader />
                 <AdminDashbordSitebar />
 
-                <div className="container" style={{ marginRight:"50px" }}>
+                <div className="container" style={{ marginRight: "50px" }}>
                     <h1 className="page-header">Edit Profile</h1>
                     <div className="row">
 

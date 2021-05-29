@@ -12,7 +12,7 @@ export async function fetch(url, options) {
     } catch (err) {
         console.log(err)
 
-        throw new Error("SERVICE_ERROR")
+       // throw new Error(err)
     }
 }
 

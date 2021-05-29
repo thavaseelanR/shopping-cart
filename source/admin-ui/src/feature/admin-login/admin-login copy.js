@@ -26,11 +26,8 @@ const loginUserCreateSlice = createSlice({
       const { formSubmit } = action.payload;
       state.isFormSubmit = formSubmit;
     },
-    serverErrorValidationUserName(state, action) {
-      state.serverUserNameError = action.payload;
-    },
-    serverErrorValidationPassword(state, action) {
-      state.serverPasswordError = action.payload;
+    serverErrorValidation(state, action){
+      debugger
     }
   },
   initialState: initialState,
@@ -38,13 +35,12 @@ const loginUserCreateSlice = createSlice({
 
 const loginUserReducer = loginUserCreateSlice.reducer;
 
-const { setFormInputValue, submitFormValue, serverErrorValidationUserName, serverErrorValidationPassword } = loginUserCreateSlice.actions;
+const { setFormInputValue, submitFormValue, serverErrorValidation } = loginUserCreateSlice.actions;
 
-const Login = ({ history, ...props }) => {
-
+const Login = ({ history }) => {
   const [page, pageDispatch] = useReducer(loginUserReducer, initialState);
 
-  let { isFormSubmit, serverUserNameError, serverPasswordError } = page;
+  const { isFormSubmit } = page;
   const {
     loginFormInputValue: { userName, password },
   } = page;
@@ -79,18 +75,16 @@ const Login = ({ history, ...props }) => {
   const formSubmit = async (e) => {
     e.preventDefault();
     if (validateForm) {
-      sessionStorage.isUserLoggedin = false;
       const result = await loginService(userName, password);
+      debugger
       if (result.data.message == 'successfully login') {
-        sessionStorage.isUserLoggedin = true;
-        debugger
-        history.push(props.location.state || '/dashboard')
+        history.push('/admin-user-list')
       }
       if (result.data.message == 'Invalid Username') {
-        pageDispatch(serverErrorValidationUserName(serverUserNameError = 'Invalid Username'));
+        serverUserNameError = 'Invalid Username';
       }
       if (result.data.message == 'Invalid Password') {
-        pageDispatch(serverErrorValidationPassword(serverPasswordError = 'Invalid Password'));
+        serverPasswordError = 'Invalid Password';
       }
 
     } else {
@@ -120,7 +114,7 @@ const Login = ({ history, ...props }) => {
               <div>
                 {serverUserNameError ?
                   <div
-                    style={{ marginLeft: "-150px", color: "red", }}
+                    style={{ marginLeft: "-90px", color: "red", display: isFormSubmit ? 'block' : 'none' }}
                     className="username-input-err"
                   >
                     {serverUserNameError}
@@ -148,14 +142,6 @@ const Login = ({ history, ...props }) => {
                 }
               </div>
               <div className="login-password-container">
-                {serverPasswordError ?
-                  <div
-                    style={{ marginLeft: "-150px", color: "red", }}
-                    className="username-input-err"
-                  >
-                    {serverPasswordError}
-                  </div> : null
-                }
                 <input
                   type="password"
                   placeholder="Password"
