@@ -1,14 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const _ = require('lodash');
 const nunjucks = require('nunjucks');
-const http = require('http');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
+let cookieParser = require('cookie-parser');
+let session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const middileware = require('./common/middileware/middileware');
+const adminRouterApi = require('./router/admin-auth-router');
 
-const { PORT, DB_CON } = process.env;
+const { PORT, DB_CON, DOMAIN_NAME, SESSION_SECRET } = process.env;
 
 const app = express();
 app.use(cookieParser());
@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(cors({
     origin: ['http://admin.shoppingcart.com', 'http://ui.shoppingcart.com'],
     credentials: true,
+    methods: ['GET', 'PUT', 'POST']
 }));
 app.enable('trust proxy');
 
@@ -24,7 +25,7 @@ app.enable('trust proxy');
 const db = require('./db');
 
 // session store
-var store = new MongoDBStore({
+let store = new MongoDBStore({
     uri: `mongodb://${DB_CON}`,
     collection: 'sessions'
 });
@@ -34,10 +35,10 @@ store.on('error', function (error) {
 });
 
 app.use(session({
-    secret: 'session123',
+    secret: SESSION_SECRET,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-        domain: 'shoppingcart.com',
+        domain: DOMAIN_NAME,
         httpOnly: false,
         path: '/',
         secure: false
@@ -51,13 +52,31 @@ app.use(session({
 app.set('view engine', 'nunjucks');
 app.use(express.static('public'));
 
-const middileware = require('./common/middileware/middileware');
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
 
-middileware(app);
-// router
-const router = require('./router/index');
-const { methods } = require('./model/admin-login');
-router(app);
+var adminRouter = express.Router()
+
+middileware(adminRouter);
+adminRouterApi(adminRouter);
+
+// mount the router on the app
+app.use('/admin', adminRouter)
+
+
+// var uiRouter = express.Router()
+
+// middileware(adminRouter);
+// adminRouterApi(adminRouter);
+
+// // mount the router on the app
+// app.use('/ui', adminRouter)
+
+app.get('/', (req, res) => {
+    res.send('hi')
+})
 
 app.listen(PORT, () => {
     console.log(`server run on ${PORT}`);

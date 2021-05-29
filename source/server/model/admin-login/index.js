@@ -10,7 +10,6 @@ var adminLoginSchema = new Schema({
     date: { type: String, require: true },
     active: { type: String, require: true },
     isDeleteUser: { type: Boolean },
-
 });
 
 // https://stackoverflow.com/questions/19474712/mongoose-and-multiple-database-in-single-node-js-project

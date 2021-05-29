@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+        {% include "partials/email-header.nunjucks" %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>

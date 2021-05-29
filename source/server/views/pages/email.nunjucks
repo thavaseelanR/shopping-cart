@@ -1,0 +1,20 @@
+{% extends "layout/email-layout.nunjucks" %}
+
+{% block content %}
+    <body style="margin:0;padding:0;word-spacing:normal;background-color:#ffffff;">
+        <div role="article" aria-roledescription="email" lang="en" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#ffffff;">
+            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                    <td align="center">
+                        <h1>Wellcome To Our Website</h1>
+                        <h3>Hi {{firstName}}</h3>
+                        <p>Thank you for visiting our websit mr/ms {{firstName}}</p>
+                        <h3>Username:{{userName}}</h1>
+                        <h3>Your Password:{{password}}</h1>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+{% endblock %}
+
